@@ -21,7 +21,7 @@ public class HomeSeuBarrigaTest extends BaseTest{
 	
 	@Test
 	public void deverealizarLogin() {
-		page.EscreveEmail("katana169@katana169.com.br");
+		page.EscreveEmail("katana169@katana169.com.br"); 
 		page.EscrevePassword("123456");
 		page.deveClicarNoBotão();
 		
