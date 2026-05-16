@@ -38,9 +38,11 @@ public class BaseTest {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--remote-allow-origins=*");
+		options.addArguments("--incognito");
 
 		driver = new ChromeDriver(options);
 		driver.manage().window().maximize();
+
 	}
 
 	@BeforeEach
@@ -54,7 +56,7 @@ public class BaseTest {
 	public void finalizar() {
 		// Você pode adicionar lógica aqui para verificar se o teste falhou
 		if (driver != null) {
-			driver.quit(); // Descomente se quiser fechar o browser após cada teste
+			// driver.quit(); // Descomente se quiser fechar o browser após cada teste
 			driver = null;
 		}
 	}

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
 
 	protected WebDriver driver;
-	private final int TIMEOUT = 5;
+	private final int TIMEOUT = 20;
 
 	public BasePage() {
 		this.driver = BaseTest.getDriver();
@@ -34,5 +34,20 @@ public class BasePage {
 
 	protected String retornaTexto(By by) {
 		return esperarElemento(by).getText();
+	}
+	
+	public void aguardarPreloaderSumi() {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+	    // Espera até que o preloader não esteja mais visível ou presente
+	    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("preloader")));
+	}
+	
+	public void aguardarCarregamento() {
+	    // Definimos uma espera de até 15 segundos
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+	    
+	    // Instruímos o Selenium a esperar até que o elemento com a classe 'preloader'
+	    // (que causou o erro de interceptação) desapareça da tela.
+	    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("preloader")));
 	}
 }

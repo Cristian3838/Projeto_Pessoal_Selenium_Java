@@ -3,6 +3,9 @@ package br.com.automacao.tests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import br.com.automacao.base.BaseTest;
 import br.com.automacao.pages.CadastroPage;
@@ -22,14 +25,14 @@ public class CadastroTest extends BaseTest {
 
 		page.botãoNovoUsuario();
 		page.escreverTextoNome("Fulano de Tal Silva");
-		page.escreverTextoEmail("katana165@katana165.com.br");
+		page.escreverTextoEmail("katana169@katana169.com.br");
 		page.escreverTextoSenha("123456");
 		page.botaoCadastrar();
 
 		String mensagem = page.obterMensagemAlerta();
 		Assertions.assertEquals("Usuário inserido com sucesso", mensagem);
 
-		test.pass("Mensagem de inserção validada com sucesso: " + mensagem);
+		test.pass("Mensagem de inserção validada com sucesso: " + mensagem); 
 	}
 
 	@Test
@@ -86,21 +89,20 @@ public class CadastroTest extends BaseTest {
 
 	@Test
 	public void deveValidarObrigatoriedadeApenasDoCampoEmail() {
-		
+
 		test.info("Iniciando teste de validação de campo Email.");
 
 		page.botãoNovoUsuario();
 		page.escreverTextoNome("Fulano de Tal Silva");
 		page.escreverTextoSenha("123456");
-		
+
 		page.botaoCadastrar();
-		
+
 		String mensagem = page.obterMensagemAlerta();
 		Assertions.assertEquals("Email é um campo obrigatório", mensagem);
-		
+
 		test.pass("Validação de obrigatoriedade de campo senha realizada com sucesso: " + mensagem);
 
-		
 	}
 
 }
